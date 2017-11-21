@@ -34,7 +34,7 @@ module.exports = {
       '/goods/*':{
         target:'http://localhost:3001'
       },
-      '/users/*':{
+      '/users/**':{
         target:'http://localhost:3001'
       }
     },
