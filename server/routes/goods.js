@@ -3,19 +3,19 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Goods = require('../models/goods');
 
-
+//连接MongoDB数据库
 mongoose.connect('mongodb://47.96.171.102:27017/dumall')
 
-mongoose.connection.on("connected",function(){
-	console.log("MongoDB connected success")
+mongoose.connection.on("connected", function () {
+  console.log("MongoDB connected success.")
 });
 
-mongoose.connection.on("error",function(){
-	console.log("MongoDB connected fails")
+mongoose.connection.on("error", function () {
+  console.log("MongoDB connected fail.")
 });
 
-mongoose.connection.on("disconnected",function(){
-	console.log("MongoDB connected disconnected")
+mongoose.connection.on("disconnected", function () {
+  console.log("MongoDB connected disconnected.")
 });
 
 //查询商品列表数据
@@ -61,6 +61,7 @@ router.get("/list", function (req,res,next) {
       }
   })
 });
+
 //加入到购物车
 router.post("/addCart", function (req,res,next) {
   var userId = '100000077',productId = req.body.productId;
@@ -130,4 +131,5 @@ router.post("/addCart", function (req,res,next) {
     }
   })
 });
+
 module.exports = router;
